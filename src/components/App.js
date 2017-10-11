@@ -5,12 +5,27 @@ import Admin from './Admin';
 import Card from './Card';
 //Import recipes
 import recettes from '../recettes';
+//Import Foirebase
+import base from '../base';
 
 class App extends React.Component {
 
 	state = {
 		recettes: recettes
 	};
+
+	//As soon as the component is mounted, synchronize with firebase
+	componentWillMount() {
+	    this.ref = base.syncState(`${this.props.params.pseudo}/recettes`, {
+	        context: this,
+            state: 'recettes'
+        })
+    }
+
+    //At deconnection
+    componentWillUnmount() {
+	    base.removeBinding(this.ref);
+    }
 
 	loadExample = () => {
 		this.setState({ recettes });
