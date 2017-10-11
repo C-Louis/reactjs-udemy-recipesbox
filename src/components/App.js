@@ -1,8 +1,19 @@
 // React
 import React from 'react';
 import Header from './Header';
+import Admin from './Admin';
+//Import recipes
+import recettes from '../recettes';
 
 class App extends React.Component {
+
+	state = {
+		recettes: recettes
+	};
+
+	loadExample = () => {
+		this.setState({ recettes });
+	};
 
 	render() {
 		return (
@@ -11,6 +22,7 @@ class App extends React.Component {
 				<div className="cards">
 					<div className="card"></div>
 				</div>
+				<Admin loadExample={this.loadExample} />
 			</div>
 		)
 	}
