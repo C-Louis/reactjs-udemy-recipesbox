@@ -1,13 +1,20 @@
+// REACT
 import React from 'react';
 
 class Card extends React.Component {
 
+    /**
+     * Renders
+     * @returns {XML}
+     */
     render() {
 
+        // Gets all ingredients from props.details and map them in a new array
         const ingredients = this.props.details.ingredients
                         .split(',')
                         .map((item, key) => <li key={key} >{item}</li>);
 
+        // Gets all instructions from props.details and map them in a new array
         const instructions = this.props.details.instructions
             .split('\n')
             .map((item, key) => <li key={key} >{item}</li>);
@@ -31,9 +38,16 @@ class Card extends React.Component {
         )
     }
 
+    /**
+     * Props typechecking with propTypes
+     * @type {{params: *}}
+     */
     static propTypes = {
         details: React.PropTypes.object.isRequired
     };
 }
 
+/**
+ * To export class
+ */
 export default Card;

@@ -10,6 +10,11 @@ import { BrowserRouter, Match, Miss } from 'react-router';
 // CSS
 import './index.css';
 
+/**
+ * Sets routes from right component according to url
+ * @returns {XML}
+ * @constructor
+ */
 const Root = () => {
 	return (
 		<BrowserRouter>
@@ -22,6 +27,9 @@ const Root = () => {
 	)
 };
 
+/**
+ * Renders
+ */
 render(
   <Root />,
   document.getElementById('root')

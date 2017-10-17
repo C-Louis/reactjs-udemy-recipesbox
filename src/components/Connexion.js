@@ -1,15 +1,24 @@
+// REACT
 import React from 'react';
 
 class Connexion extends React.Component {
 
+    /**
+     * Opens app page with pseudo from connection page.
+     * @param event
+     */
 	goToApp = event => {
 		event.preventDefault();
-		// On récupère le pseudo
+		// Gets the pseudo from form.
 		const pseudo = this.boxInput.value;
-		// On change d'url
+		// Changes url to display a new page.
 		this.context.router.transitionTo(`/box/${pseudo}`);
 	};
 
+    /**
+     * Renders
+     * @returns {XML}
+     */
 	render() {
 		return (
 			<div className="connexionBox">
@@ -23,9 +32,16 @@ class Connexion extends React.Component {
 		)
 	}
 
+    /**
+	 * To handle React context, needs of contextTypes
+     * @type {{router: *}}
+     */
 	static contextTypes = {
 		router: React.PropTypes.object
 	};
 }
 
+/**
+ * To export class
+ */
 export default Connexion;

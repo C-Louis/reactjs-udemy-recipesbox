@@ -1,9 +1,10 @@
+//REACT
 import React from 'react';
 
 class Admin extends React.Component {
 
     render() {
-        //Return jsx
+        //Returns jsx
         return (
             <div className="cards">
                 <footer>
@@ -13,9 +14,16 @@ class Admin extends React.Component {
         )
     }
 
+    /**
+     * Props typechecking with propTypes
+     * @type {{params: *}}
+     */
     static propTypes = {
         loadExample: React.PropTypes.func.isRequired
     };
 }
 
+/**
+ * To export class
+ */
 export default Admin;
