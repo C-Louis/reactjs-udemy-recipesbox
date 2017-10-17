@@ -14,7 +14,7 @@ class App extends React.Component {
      * Creates a new state
       */
 	state = {
-		recettes: recettes
+		recipes: recettes
 	};
 
     /**
@@ -23,7 +23,7 @@ class App extends React.Component {
 	componentWillMount() {
 	    this.ref = base.syncState(`${this.props.params.pseudo}/recettes`, {
 	        context: this,
-            state: 'recettes'
+            state: 'recipes'
         })
     }
 
@@ -35,11 +35,26 @@ class App extends React.Component {
     }
 
     /**
-	 * Loads all recipes in state
+	 * Loads all recipes from Firebase .in state
      */
 	loadExample = () => {
 		this.setState({ recettes });
 	};
+
+    /**
+     * Adds a new recipe in state.
+     * @param recipe
+     */
+	addRecipe = (recipe) => {
+	    // Make a copy of state.
+	    const recipes = {...this.state.recipes};
+	    // Creates unique key with timestamp.
+        const timestamp = Date.now();
+        // Adds an entry in the copy of state.
+        recipes[ `recipe-${timestamp}`] = recipe;
+        // Updates state.
+        this.setState({ recipes });
+    }
 
     /**
 	 * Renders
@@ -48,8 +63,8 @@ class App extends React.Component {
 	render() {
 		//
 		const cards = Object
-			.keys(this.state.recettes)
-			.map(key => <Card key={key} details={this.state.recettes[key]} />);
+			.keys(this.state.recipes)
+			.map(key => <Card key={key} details={this.state.recipes[key]} />);
 
 		// Returns JSX
 		return (
@@ -58,7 +73,10 @@ class App extends React.Component {
 				<div className="cards">
 					{cards}
 				</div>
-				<Admin loadExample={this.loadExample} />
+				<Admin
+                    loadExample={this.loadExample}
+                    addRecipe={this.addRecipe}
+                />
 			</div>
 		)
 	}
@@ -73,6 +91,6 @@ class App extends React.Component {
 }
 
 /**
- * To export class
+ * To export component
  */
 export default App;

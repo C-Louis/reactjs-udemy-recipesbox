@@ -1,5 +1,7 @@
 //REACT
 import React from 'react';
+// Components
+import AddRecipe from './AddRecipe';
 
 class Admin extends React.Component {
 
@@ -7,6 +9,7 @@ class Admin extends React.Component {
         //Returns jsx
         return (
             <div className="cards">
+                <AddRecipe addRecipe={this.props.addRecipe} />
                 <footer>
                     <button onClick={this.props.loadExample}>Remplir</button>
                 </footer>
@@ -19,11 +22,12 @@ class Admin extends React.Component {
      * @type {{params: *}}
      */
     static propTypes = {
-        loadExample: React.PropTypes.func.isRequired
+        loadExample: React.PropTypes.func.isRequired,
+        addRecipe: React.PropTypes.func.isRequired
     };
 }
 
 /**
- * To export class
+ * To export component
  */
 export default Admin;

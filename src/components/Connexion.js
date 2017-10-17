@@ -8,6 +8,7 @@ class Connexion extends React.Component {
      * @param event
      */
 	goToApp = event => {
+        // Avoids reloading page on submit.
 		event.preventDefault();
 		// Gets the pseudo from form.
 		const pseudo = this.boxInput.value;
@@ -42,6 +43,6 @@ class Connexion extends React.Component {
 }
 
 /**
- * To export class
+ * To export component
  */
 export default Connexion;
